@@ -1,0 +1,21 @@
+# Python bytecode (hasil compile)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment (Folder library)
+env/
+venv/
+.env
+.venv/
+
+# Database SQLite (lokal saja)
+instance/
+*.db
+
+# IDE (VS Code config)
+.vscode/
+
+# Folder Migrations (Opsional)
+# Biasanya migrations di-commit, tapi isinya jangan yang cache
+migrations/__pycache__/

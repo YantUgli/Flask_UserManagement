@@ -1,7 +1,8 @@
 from flask import Blueprint, request
-from app.services.suser_service import UserServices
+from app.services.user_service import UserServices
 from app.utils.response import success_response, error_response
 from sqlalchemy.exc import SQLAlchemyError, IntegrityError
+from app.services.task_service import TaskService
 
 
 user_blueprint = Blueprint("users", __name__)
@@ -18,6 +19,8 @@ def create_user():
             "email" : user.email
             }, "user created", 201
         )
+    except ValueError as e:
+        return error_response(str(e), 400)
     except IntegrityError:
         return error_response("Email already exists", 409)
     except SQLAlchemyError:
@@ -74,3 +77,38 @@ def delete_user(user_id):
     "id": user.id,
     "name": user.name
 }, "User deleted")
+
+
+@user_blueprint.route('/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    data = request.get_json()
+    if not data:
+        return error_response("Invalid JSON body", 400)
+    
+    try:
+        user = UserServices.update_user(user_id, data)
+
+        return success_response(
+            {
+                "id" : user.id,
+                "name" : user.name,
+                "email": user.email
+            }, "User updated"
+        )
+    except ValueError as e:
+        return error_response(str(e), 400)
+    
+    except IntegrityError:
+        return error_response("Email already exists", 409)
+
+    except SQLAlchemyError:
+        return error_response("Database error", 500)
+    
+@user_blueprint.route('/users/<int:user_id>/tasks', methods=['GET'])
+def get_user_tasks(user_id):
+    tasks = TaskService.get_tasks_by_user(user_id)
+
+    if tasks is None:
+        return error_response("user not found", 404)
+    
+    return success_response([t.to_dict() for t in tasks])
