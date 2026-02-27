@@ -16,7 +16,7 @@ Struktur proyek mengikuti pola arsitektur berikut:
 ## 🛠️ Instalasi & Setup
 
 1. **Clone Repositori**
-   ```bash
+```bash
    git clone <repository-url>
    cd flask-user-management
 
