@@ -1,8 +1,4 @@
-Siap, mengerti! Kamu ingin versi **Full Markdown Code Block** dari awal sampai akhir tanpa ada gangguan teks penjelasan di luarnya agar bisa langsung di-copy-paste total.
 
-Berikut adalah isi file `README.md` kamu:
-
-```markdown
 # Flask User & Task Management System
 
 Proyek ini adalah API untuk manajemen pengguna (User) dan tugas (Task) yang dibangun menggunakan **Flask**. Proyek ini menerapkan **3-Tier Architecture** (Route -> Service -> Repository) untuk menjaga pemisahan tanggung jawab kode yang bersih dan profesional.
