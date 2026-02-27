@@ -19,3 +19,5 @@ instance/
 # Folder Migrations (Opsional)
 # Biasanya migrations di-commit, tapi isinya jangan yang cache
 migrations/__pycache__/
+
+.coverage

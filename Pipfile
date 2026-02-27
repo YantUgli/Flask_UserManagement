@@ -9,6 +9,7 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 python-dotenv = "*"
 marshmallow = "*"
+coverage = "*"
 
 [dev-packages]
 pytest = "*"

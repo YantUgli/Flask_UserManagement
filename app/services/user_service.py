@@ -26,6 +26,7 @@ class UserServices:
         
         UserRepository.delete_user(user)
         return user
+    
     @staticmethod
     def update_user(user_id, data):
         user = UserRepository.get_user_by_id(user_id)

@@ -1,0 +1,18 @@
+[run]
+# Tentukan folder mana yang mau dihitung coverage-nya
+source = app/services
+
+[report]
+# Baris yang tidak akan dihitung (biasanya boilerplate atau yang tidak ada logikanya)
+omit =
+    app/__init__.py
+    app/extensions.py
+    app/config.py
+    app/utils/*
+    app/models/*
+    app/repositories/*
+    app/routes/*
+    tests/*
+
+# Tampilkan nomor baris yang belum ter-cover di terminal
+show_missing = True
