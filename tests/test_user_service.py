@@ -5,7 +5,7 @@ from app.services.user_service import UserServices
 @patch('app.services.user_service.UserRepository')
 class TestUserService:
 
-    # --- TEST CREATE USER ---
+    # TEST CREATE 
     def test_create_user_success(self, mock_repo):
         data = {"name": "Budi", "email": "budi@mail.com"}
         
@@ -23,7 +23,7 @@ class TestUserService:
             UserServices.create_user({"name": "", "email": "a@a.com"})
         assert "name and email are required" in str(exc.value).lower()
 
-    # --- TEST GET USERS ---
+    # TEST GET 
     def test_get_all_users(self, mock_repo):
         mock_repo.get_all_users.return_value = [MagicMock(), MagicMock()]
         
@@ -40,7 +40,7 @@ class TestUserService:
         assert result.id == 1
         mock_repo.get_user_by_id.assert_called_with(1)
 
-    # --- TEST DELETE USER ---
+    # TEST DELETE 
     def test_delete_user_success(self, mock_repo):
         mock_user = MagicMock()
         mock_repo.get_user_by_id.return_value = mock_user
@@ -56,7 +56,7 @@ class TestUserService:
         assert result is None
         mock_repo.delete_user.assert_not_called()
 
-    # --- TEST UPDATE USER ---
+    # TEST UPDATE
     def test_update_user_success(self, mock_repo):
         mock_user = MagicMock()
         mock_user.name = "Old Name"
